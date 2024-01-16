@@ -50,4 +50,4 @@ This React frontend serves as a unified dashboard to monitor the logs generated 
     http://localhost:3000
     ```
 
-**Note:** This project is currently in development and not the final production version. Enhance your monitoring capabilities with the **pps-frontend-logs-monitor** React project, providing a centralized view of activities across your entire infrastructure powered by Flask backend services.
+**Note:** This project is currently in development and not the final production version.
