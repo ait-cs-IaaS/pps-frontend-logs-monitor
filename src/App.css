@@ -1,38 +1,49 @@
-.App {
-  text-align: center;
+/* App.css */
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /* Set a minimum height to allow for larger content */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  min-height: 100vh; /* Set a minimum height for the container */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.column-container {
+  flex: 1;
+  margin: 20px; /* Add margin for separation */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.log-viewers-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.log-viewer {
+  max-width: 300px; /* Adjust the max-width based on your design */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* VideoFeed.css */
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh; /* Set the body height to 100% of the viewport height */
+}
+
+.video-feed {
+  width: 100%;
+  max-width: 100%;
+}
+
+.video-feed iframe {
+  width: 100%;
+  height: 70vh; /* Adjust the height based on your design */
 }
