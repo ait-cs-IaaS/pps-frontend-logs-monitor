@@ -1,49 +1,52 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
+import './VideoFeed.css';
 
 const VideoFeed = () => {
-  const videoRef = useRef();
+  const [logs, setLogs] = useState([]);
 
   useEffect(() => {
-    const videoElement = videoRef.current;
+    const intervalId = setInterval(() => {
+      const timestamp = new Date().toLocaleString();
+      const logType =
+        Math.random() < 0.2 ? 'Info' :
+        Math.random() < 0.4 ? 'Warning' :
+        Math.random() < 0.6 ? 'Access' :
+        Math.random() < 0.8 ? 'Breach' :
+        'lockdown';
+      const logContent = `Random log message ${Math.floor(Math.random() * 100)}`;
+      const newLog = { timestamp, logType, logContent };
 
-    const startStreaming = async () => {
-      try {
-        const response = await fetch('http://127.0.0.1:9001/feed');
-        const reader = response.body.getReader();
+      setLogs(prevLogs => {
+        const newLogs = [newLog, ...prevLogs.slice(0, 45)]; // Keep a maximum of 10 logs
+        return newLogs;
+      });
+    }, 2000);
 
-        while (true) {
-          const { done, value } = await reader.read();
-
-          if (done) {
-            break;
-          }
-
-          const blob = new Blob([value], { type: 'image/jpeg' });
-          const imageUrl = URL.createObjectURL(blob);
-
-          // Set the image URL as the source for the video element
-          videoElement.src = imageUrl;
-          await new Promise(resolve => setTimeout(resolve, 50));
-        }
-      } catch (error) {
-        console.error('Error streaming video:', error);
-      }
-    };
-
-    startStreaming();
-
-    // Clean up resources on component unmount
-    return () => {
-      if (videoElement.src) {
-        URL.revokeObjectURL(videoElement.src);
-      }
-    };
+    return () => clearInterval(intervalId);
   }, []);
 
   return (
-    <div>
-      <h1>Video Feed</h1>
-      <video ref={videoRef} width="640" height="480" autoPlay playsInline />
+    <div className="video-feed-container">
+      <iframe
+        src='http://localhost:9001/feed'
+        title='Video Feed'
+        width='600'
+        height='400'
+        frameBorder='0'
+        allow='autoplay; encrypted-media'
+        allowFullScreen
+      ></iframe>
+
+      <div className='random-logs-container'>
+        <h2>Camera Logs</h2>
+        <ul>
+          {logs.map((log, index) => (
+            <li key={index} className='log-item'>
+              <strong>{log.timestamp}</strong> - {log.logType}: {log.logContent}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
