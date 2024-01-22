@@ -1,7 +1,4 @@
-// LogViewer.js
-
 import React, { useEffect, useState } from 'react';
-import './LogViewer.css';
 
 const LogViewer = ({ apiEndpoint, columnTitle }) => {
   const [logs, setLogs] = useState([]);
@@ -33,11 +30,15 @@ const LogViewer = ({ apiEndpoint, columnTitle }) => {
   }, [apiEndpoint]);
 
   return (
-    <div className="log-column">
+    <div className="log-column animate-log-container"> {/* Add animate-log-container class */}
       <h2>{columnTitle}</h2>
       <ul>
         {logs.map((log, index) => (
-          <li key={index} className="log-entry">
+          <li
+            key={index}
+            className={`log-item ${log.logType} animate-log`} // Add animate-log class
+            style={{ animationDelay: `${index * 2}s` }} // Adjust the delay as needed
+          >
             <strong>Timestamp:</strong> {log.timestamp} <br />
             <strong>Request:</strong> {log.request} <br />
             <strong>Source IP:</strong> {log.source_ip} <br />

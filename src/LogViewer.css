@@ -1,7 +1,21 @@
-/* LogViewer.css */
+.log-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-.log-viewers-container {
-    display: flex;
-    gap: 20px;
-  }
-  
+.log-apps {
+  display: flex;
+}
+
+.log-app {
+  /* Add any styles for individual app elements */
+  margin-right: 8px; /* Adjust the spacing between app elements as needed */
+}
+
+.log-system {
+  /* Add any styles for the system element */
+  margin-top: 8px; /* Adjust the spacing between apps and the system */
+}
+
+/* Add any other styles as needed */

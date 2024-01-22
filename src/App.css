@@ -1,49 +1,78 @@
-/* App.css */
-
-body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  min-height: 100vh; /* Set a minimum height to allow for larger content */
-}
-
-.container {
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-  min-height: 100vh; /* Set a minimum height for the container */
-}
-
-.column-container {
-  flex: 1;
-  margin: 20px; /* Add margin for separation */
-}
-
-.log-viewers-container {
-  display: flex;
-  flex-direction: column;
+/* Grid layout */
+.app-grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
 
-.log-viewer {
-  max-width: 300px; /* Adjust the max-width based on your design */
+/* Common styles for app containers */
+.app-container {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
-/* VideoFeed.css */
-
-body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  height: 100vh; /* Set the body height to 100% of the viewport height */
+/* Margin for log viewers container */
+.log-viewers-container {
+  margin-top: 8px;
 }
 
-.video-feed {
+/* Margin for video feed container */
+.video-feed-container {
+  margin-top: 10px;
+}
+
+/* Iframe styles */
+iframe {
   width: 100%;
-  max-width: 100%;
+  height: 25vh;
+  border: none;
+  filter: grayscale(1) blur(0.5px);
 }
 
-.video-feed iframe {
-  width: 100%;
-  height: 70vh; /* Adjust the height based on your design */
+/* Animation for log items */
+.random-logs-container ul li {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* Specific styles for each log type */
+.random-logs-container ul li.log-item.info {
+  color: blue;
+}
+
+.random-logs-container ul li.log-item.warning {
+  color: red;
+}
+
+.random-logs-container ul li.log-item.access {
+  color: green;
+}
+
+.random-logs-container ul li.log-item.breach {
+  color: orange;
+}
+
+.random-logs-container ul li.log-item.lockdown {
+  color: purple;
+}
+
+/* Add the fadeInUp animation to the animate-log class */
+.animate-log {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.005s ease-out forwards;
+}
+
+/* Keyframes for fadeInUp animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
