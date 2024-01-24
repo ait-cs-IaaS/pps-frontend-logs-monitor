@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './VideoFeed.css';
 
 const VideoFeed = () => {
   const [logs, setLogs] = useState([]);
@@ -13,7 +12,7 @@ const VideoFeed = () => {
         Math.random() < 0.6 ? 'Access' :
         Math.random() < 0.8 ? 'Breach' :
         'lockdown';
-      const logContent = `Random log message ${Math.floor(Math.random() * 100)}`;
+      const logContent = `New log message ${Math.floor(Math.random() * 100)}`;
       const newLog = { timestamp, logType, logContent };
 
       setLogs(prevLogs => {
@@ -41,7 +40,7 @@ const VideoFeed = () => {
         <h2>Camera Logs</h2>
         <ul>
           {logs.map((log, index) => (
-            <li key={index} className='log-item'>
+            <li key={index} className={`log-item ${log.logType}`}>
               <strong>{log.timestamp}</strong> - {log.logType}: {log.logContent}
             </li>
           ))}
