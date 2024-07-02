@@ -27,7 +27,7 @@ const VideoFeed = () => {
   return (
     <div className="video-feed-container">
       <iframe
-        src='http://localhost:9001/feed'
+        src='http://localhost:5001/feed'
         title='Video Feed'
         width='600'
         height='400'
