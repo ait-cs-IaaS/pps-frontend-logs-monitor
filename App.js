@@ -9,14 +9,14 @@ const App = () => {
       <div className="app-container">
         <h1>Access Control Panel</h1>
         <div className="log-viewers-container">
-          <LogViewer apiEndpoint="http://127.0.0.1:5000/api/get_data" columnTitle="Logs" />
+          <LogViewer apiEndpoint="http://127.0.0.1:7001/api/get_data" columnTitle="Logs" />
         </div>
       </div>
 
       <div className="app-container">
         <h1>Facial Recognition System</h1>
         <div className="log-viewers-container">
-          <LogViewer apiEndpoint="http://127.0.0.1:7001/api/get_data" columnTitle="Logs" />
+          <LogViewer apiEndpoint="http://127.0.0.1:6001/api/get_data" columnTitle="Logs" />
         </div>
       </div>
 
